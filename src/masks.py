@@ -15,4 +15,4 @@ def get_mask_account(account_number: Union[str, int]) -> str:
     return mask_account
 
 
-print(get_mask_card_number(1458647598321546))
+
