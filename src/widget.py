@@ -6,9 +6,9 @@ def mask_account_card(info_card: str) -> str:
     info_card_split = info_card.split()
     number_card = info_card_split[-1]
     if info_card_split[0] == "Счет":
-        result = get_mask_account(number_card)
+        result = f"{info_card_split[0]} {get_mask_account(number_card)}"
     else:
-        result = get_mask_card_number(number_card)
+        result = f"{info_card[:-17]} {get_mask_card_number(number_card)}"
     return result
 
 
@@ -17,3 +17,5 @@ def get_date(date_str: str) -> str:
     и возвращает строку с датой в формате 'ДД.ММ.ГГГГ'"""
     new_date_str = f"{date_str[8:10]}.{date_str[5:7]}.{date_str[:4]}"
     return new_date_str
+
+
