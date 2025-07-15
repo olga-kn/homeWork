@@ -1,4 +1,5 @@
-from masks import get_mask_account, get_mask_card_number
+from masks import get_mask_account
+from masks import get_mask_card_number
 
 
 def mask_account_card(info_card: str) -> str:
@@ -17,5 +18,3 @@ def get_date(date_str: str) -> str:
     и возвращает строку с датой в формате 'ДД.ММ.ГГГГ'"""
     new_date_str = f"{date_str[8:10]}.{date_str[5:7]}.{date_str[:4]}"
     return new_date_str
-
-
