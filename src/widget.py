@@ -1,20 +1,27 @@
 from masks import get_mask_account
 from masks import get_mask_card_number
-
+from datetime import datetime
 
 def mask_account_card(info_card: str) -> str:
-    """Функция обрабатывает информацию о картах и счетах, возвращает замаскированный номер"""
-    info_card_split = info_card.split()
-    number_card = info_card_split[-1]
-    if info_card_split[0] == "Счет":
-        result = f"{info_card_split[0]} {get_mask_account(number_card)}"
+    """Возвращает замаскированный номер счета или карты."""
+    parts = info_card.strip().split()
+
+    card_number = parts[-1]
+    if parts[0].lower() == "счет":
+        return f"{parts[0]} {get_mask_account(card_number)}"
     else:
-        result = f"{info_card[:-17]} {get_mask_card_number(number_card)}"
-    return result
+        name_part = " ".join(parts[:-1])
+        return f"{name_part} {get_mask_card_number(card_number)}"
+
+
 
 
 def get_date(date_str: str) -> str:
-    """Функция принимает принимает на вход строку с датой в формате'2024-03-11T02:26:18.671407'
-    и возвращает строку с датой в формате 'ДД.ММ.ГГГГ'"""
-    new_date_str = f"{date_str[8:10]}.{date_str[5:7]}.{date_str[:4]}"
-    return new_date_str
+    """Преобразует дату в формат 'ДД.ММ.ГГГГ'."""
+    try:
+        dt = datetime.fromisoformat(date_str)
+        return dt.strftime('%d.%m.%Y')
+    except ValueError:
+        raise ValueError(f"Неверный формат даты: {date_str}")
+
+
