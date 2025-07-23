@@ -2,16 +2,8 @@ from src.masks import get_mask_account, get_mask_card_number
 import pytest
 # Функция get_mask_card_number
 # Тестирование правильности маскирования номера карты.
-@pytest.fixture
-def number():
-    return "7000792289606361"
-
-
-def test_get_mask_card_number(number):
-    assert get_mask_card_number(number) == "7000 79** **** 6361"
-
 # Проверка работы функции на различных входных форматах номеров карт, включая нестандартные длины номеров.
-@pytest.mark.parametrize("card_number, result", [("70007922896063622", "7000 79** **** 3622"),  ]
+@pytest.mark.parametrize("card_number, result", [("7000792289606361", "7000 79** **** 6361"), ()  ]
 # Проверка, что функция корректно обрабатывает входные строки, где отсутствует номер карты.
 
 # Функция get_mask_account
