@@ -13,9 +13,11 @@ def get_mask_card_number(card_number: Union[str, int]) -> str:
 
 def get_mask_account(account_number: Union[str, int]) -> str:
     """Функция маскировки номера банковского счета"""
-    if len(account_number) >= 6 and account_number.isdigit():
+    if len(account_number) == 20 and account_number.isdigit():
         account_number = str(account_number)
         mask_account = f"**{account_number[-4:]}"
         return mask_account
     else:
         return "Некорректный ввод"
+result = get_mask_card_number("")
+print(result)
