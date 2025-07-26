@@ -19,5 +19,3 @@ def get_mask_account(account_number: Union[str, int]) -> str:
         return mask_account
     else:
         return "Некорректный ввод"
-result = get_mask_card_number("")
-print(result)
