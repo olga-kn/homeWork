@@ -26,8 +26,7 @@ def get_date(date_str: str) -> str:
     except ValueError:
         return "Неверный формат даты"
 
-# result = get_date("2024-30-11")
-# print(result)
+
 
 
 

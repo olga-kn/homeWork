@@ -6,7 +6,8 @@ from src.masks import get_mask_card_number
 
 # Функция get_mask_card_number
 # Тестирование правильности маскирования номера карты.
-assert get_mask_card_number("1478523697412365") == "1478 52** **** 2365"
+def test_get_mask_card_number():
+    assert get_mask_card_number("1478523697412365") == "1478 52** **** 2365"
 
 
 # Проверка работы функции на различных входных форматах номеров карт, включая нестандартные длины номеров и отсутствие номера карты.
@@ -25,7 +26,8 @@ def test_get_mask_card_number(card_number, result):
 
 # Функция get_mask_account
 # Тестирование правильности маскирования номера счета.
-assert get_mask_account("23558766748914578546") == "**8546"
+def test_get_mask_account():
+    assert get_mask_account("23558766748914578546") == "**8546"
 
 
 # Проверка работы функции с различными форматами и длинами номеров счетов.
