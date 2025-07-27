@@ -1,7 +1,8 @@
 import pytest
 
-from src.widget import mask_account_card
 from src.widget import get_date
+from src.widget import mask_account_card
+
 
 # Функция mask_account_card
 # Тесты для проверки, что функция корректно распознает и применяет нужный тип маскировки в зависимости от типа входных данных (карта или счет).

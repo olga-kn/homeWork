@@ -1,6 +1,7 @@
+from datetime import datetime
+
 from src.masks import get_mask_account
 from src.masks import get_mask_card_number
-from datetime import datetime
 
 
 def mask_account_card(info_card: str) -> str:
@@ -25,8 +26,3 @@ def get_date(date_str: str) -> str:
         return dt.strftime("%d.%m.%Y")
     except ValueError:
         return "Неверный формат даты"
-
-
-
-
-

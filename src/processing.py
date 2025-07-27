@@ -15,7 +15,3 @@ def sort_by_date(list_of_dict: List[Dict[str, str]], reverse: bool = True) -> Li
         return sorted_list_of_dict
     except ValueError:
         return "Неверный формат даты"
-
-
-# result = sort_by_date([{'id': 41428829, 'state': 'EXECUTED', 'date': '14-03-2019T18:35:29.512364'}])
-# print(result)
