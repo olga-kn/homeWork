@@ -80,9 +80,26 @@ transactions = (
 
 
 def filter_by_currency(transactions, currency):
+    '''Функция возвращает итератор, который поочередно выдает транзакции, где валюта операции соответствует заданной'''
     for transaction in transactions:
         if transaction["operationAmount"]["currency"]["code"] == currency:
             yield transaction
+
+
+def transaction_descriptions(transactions):
+    '''Функция возвращает описание каждой операции по очереди'''
+    for transaction in transactions:
+        result_transactions = transaction.get("description")
+        yield result_transactions
+
+
+def card_number_generator(start, stop):
+    """Генерирует номера карт в заданном диапазоне"""
+    for number in range(start, stop):
+        card_number = str(number).zfill(16)
+        yield f"{card_number[:4]} {card_number[4:8]} {card_number[8:12]} {card_number[12:]}"
+
+
 
 
 
