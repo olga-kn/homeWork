@@ -24,4 +24,4 @@ result = get_mask_card_number(number_card)
 
 2. Запустить тесты можно используя команду pytest.
 
-3. Код покрыт тестами на 98%, есть отчет в формате HTML в папке htmlcov, файл index.html.
+3. Код покрыт тестами на 94%, есть отчет в формате HTML в папке htmlcov, файл index.html.
