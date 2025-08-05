@@ -215,50 +215,58 @@ def test_transaction_descriptions():
 
 
 # Тестирование работы функции с различным количеством входных транзакций, включая пустой список.
-def test_transaction_descriptions():
-    assert list(transaction_descriptions([])) == [[]]
-
-
-def test_transaction_descriptions():
-    transactions = [
-        {
-            "id": 939719570,
-            "state": "EXECUTED",
-            "date": "2018-06-30T02:08:58.425572",
-            "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
-            "description": "Перевод организации",
-            "from": "Счет 75106830613657916952",
-            "to": "Счет 11776614605963066702",
-        },
-        {
-            "id": 142264268,
-            "state": "EXECUTED",
-            "date": "2019-04-04T23:20:05.206878",
-            "operationAmount": {"amount": "79114.93", "currency": {"name": "USD", "code": "USD"}},
-            "description": "Перевод со счета на счет",
-            "from": "Счет 19708645243227258542",
-            "to": "Счет 75651667383060284188",
-        },
-    ]
-    result = list(transaction_descriptions(transactions))
-    expected = ["Перевод организации", "Перевод со счета на счет"]
-    assert result == expected
-
-
-def test_transaction_descriptions():
-    transactions = [
-        {
-            "id": 594226727,
-            "state": "CANCELED",
-            "date": "2018-09-12T21:27:25.241689",
-            "operationAmount": {"amount": "67314.70", "currency": {"name": "руб.", "code": "RUB"}},
-            "description": "Перевод организации",
-            "from": "Visa Platinum 1246377376343588",
-            "to": "Счет 14211924144426031657",
-        }
-    ]
-    result = list(transaction_descriptions(transactions))
-    expected = ["Перевод организации"]
+@pytest.mark.parametrize(
+    "result, expected",
+    [
+        (list(transaction_descriptions([])), [[]]),
+        (
+            list(
+                transaction_descriptions(
+                    [
+                        {
+                            "id": 939719570,
+                            "state": "EXECUTED",
+                            "date": "2018-06-30T02:08:58.425572",
+                            "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
+                            "description": "Перевод организации",
+                            "from": "Счет 75106830613657916952",
+                            "to": "Счет 11776614605963066702",
+                        },
+                        {
+                            "id": 142264268,
+                            "state": "EXECUTED",
+                            "date": "2019-04-04T23:20:05.206878",
+                            "operationAmount": {"amount": "79114.93", "currency": {"name": "USD", "code": "USD"}},
+                            "description": "Перевод со счета на счет",
+                            "from": "Счет 19708645243227258542",
+                            "to": "Счет 75651667383060284188",
+                        },
+                    ]
+                )
+            ),
+            ["Перевод организации", "Перевод со счета на счет"],
+        ),
+        (
+            list(
+                transaction_descriptions(
+                    [
+                        {
+                            "id": 594226727,
+                            "state": "CANCELED",
+                            "date": "2018-09-12T21:27:25.241689",
+                            "operationAmount": {"amount": "67314.70", "currency": {"name": "руб.", "code": "RUB"}},
+                            "description": "Перевод организации",
+                            "from": "Visa Platinum 1246377376343588",
+                            "to": "Счет 14211924144426031657",
+                        }
+                    ]
+                )
+            ),
+            ["Перевод организации"],
+        ),
+    ],
+)
+def test_transaction_descriptions(result, expected):
     assert result == expected
 
 
