@@ -20,27 +20,20 @@ def log(filename=None):
                     file.close()
                 else:
                     print(f"Начало: {time_1}")
-                    print(f"{name_func} ok. Результат: {func(*args, **kwargs)}")
+                    print(f"{name_func} ок. Результат: {func(*args, **kwargs)}")
                     print(f"Конец: {time_2}")
             except Exception as e:
                 result = None
-                print(f"Начало: {time_1}")
                 print(f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}")
-                print(f"Конец: {time_2}")
             except ZeroDivisionError:
                 result = None
-                print(f"Начало: {time_1}")
                 print(f"{func.__name__} error: ZeroDivisionError. Inputs: {args}, {kwargs}")
-                print(f"Конец: {time_2}")
+            except KeyError:
+                result = None
+                print(f"{func.__name__} error: KeyError. Inputs: {args}, {kwargs}")
             return result
 
         return wrapper
 
     return decorator
 
-
-@log()
-def summa(x, y):
-    return x + y
-
-print(summa(x = "5", y = "3"))
