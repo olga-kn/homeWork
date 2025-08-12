@@ -189,11 +189,23 @@ from src.generators import transaction_descriptions
 for card_number in card_number_generator(1, 5):
     print(card_number)
 ```
+5. Модуль decorators
 
+Декоратор log автоматически регистрирует детали выполнения функций, такие как время вызова, имя функции, передаваемые аргументы, результат выполнения и информация об ошибках.
+
+Пример использования декоратора:
+
+``` 
+@log(filename="mylog.txt")
+def my_function(x, y):
+    return x + y
+
+my_function(8, 2)
+```
 ## Тестирование:
 1. Для тестирования используется библиотека pytest.
 
 2. Запустить тесты можно используя команду pytest.
 
-3. Код покрыт тестами на 94%, есть отчет в формате HTML в папке htmlcov, файл index.html.
+3. Код покрыт тестами на 90%, есть отчет в формате HTML в папке htmlcov, файл index.html.
 
