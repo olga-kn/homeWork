@@ -26,7 +26,7 @@ def test_my_function_success(capsys):
 def test_my_function_division_by_zero(capsys):
     my_function(4, 0)
     captured = capsys.readouterr()
-    assert "my_function error: division by zero. Inputs: (4, 0), {}" in captured.out
+    assert "my_function error: ZeroDivisionError. Inputs: (4, 0), {}" in captured.out
 
 
 @log()
@@ -37,7 +37,7 @@ def my_function_key_error():
 def test_my_function_key_error(capsys):
     my_function_key_error()
     captured = capsys.readouterr()
-    assert "my_function_key_error error: 'b'. Inputs: (), {}" in captured.out
+    assert "my_function_key_error error: KeyError. Inputs: (), {}\n" in captured.out
 
 
 # Проверка на вывод в файл
