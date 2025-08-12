@@ -26,13 +26,7 @@ def log(filename=None):
                     print(f"Конец: {time_2}")
             except Exception as e:
                 result = None
-                print(f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}")
-            except ZeroDivisionError:
-                result = None
-                print(f"{func.__name__} error: ZeroDivisionError. Inputs: {args}, {kwargs}")
-            except KeyError:
-                result = None
-                print(f"{func.__name__} error: KeyError. Inputs: {args}, {kwargs}")
+                print(f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}")
             return result
 
         return wrapper
